@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomorow List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="icons8-lista-de-verificação-100.png" type="image/x-icon">
+    
+
+</head>
+<body>
+    
+    <div class="header">
+        <h1><img src="icons8-lista-de-verificação-100.png" alt="list"></h1>
+        <button onclick="showAddTaskModal()">Adicionar Tarefa</button>
+        <button onclick="showAddResponsibleModal()">Adicionar Responsável</button>
+        <button onclick="createNewTaskBlock()">Novo Bloco de Tarefas</button>
+        <button onclick="resetAllData()">Resetar Dados</button>
+        <div class="filters">
+           
+        </div>
+    </div>
+    <div id="task-blocks"></div>
+    
+    <!-- Modal para Adicionar Tarefa -->
+    <div class="modal" id="addTaskModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddTaskModal()">&times;</span>
+            <h2>Adicionar Tarefa</h2>
+            <form id="addTaskForm">
+                <label for="taskTitle">Título</label>
+                <input type="text" id="taskTitle" required>
+                <label for="taskDescription">Descrição</label>
+                <textarea id="taskDescription" required></textarea>
+                <label for="taskResponsible">Responsável</label>
+                <select id="taskResponsible" required></select>
+                <label for="taskStatus">Status Inicial</label>
+                <select id="taskStatus" required>
+                    <option value="not-started">Não Iniciada</option>
+                    <option value="in-progress">Em Andamento</option>
+                    <option value="done">Concluída</option>
+                </select>
+                <button type="submit">Adicionar Tarefa</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar Responsável -->
+<div class="modal" id="addResponsibleModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddResponsibleModal()">&times;</span>
+        <h2>Adicionar Responsável</h2>
+        <form id="addResponsibleForm">
+            <label for="responsibleName">Nome</label>
+            <input type="text" id="responsibleName" required>
+            <label for="responsibleAvatar">Avatar</label>
+            <input type="file" id="responsibleAvatar" accept="image/*">
+            <button type="submit">Adicionar Responsável</button>
+        </form>
+    </div>
+</div>
+
+    <!-- Modal para Atualizar Status da Tarefa -->
+    <div class="modal" id="updateStatusModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUpdateStatusModal()">&times;</span>
+            <h2>Atualizar Status da Tarefa</h2>
+            <label for="updateStatus">Status</label>
+            <select id="updateStatus">
+                <option value="not-started">Não Iniciada</option>
+                <option value="in-progress">Em Andamento</option>
+                <option value="done">Concluída</option>
+            </select>
+            <button onclick="updateTaskStatus()">Atualizar</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
